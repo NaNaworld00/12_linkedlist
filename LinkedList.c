@@ -10,7 +10,7 @@ typedef struct linknd {
 
 static linknd_t *list; //linked List 실체 
 
-linknd_t* create_rode(int value) {
+linknd_t* create_node(int value) {
 	linknd_t* ndPtr;
 	
 	//동적 메모리 할당
@@ -27,4 +27,38 @@ linknd_t* create_rode(int value) {
 	
 	return ndPtr;
 	 
+}
+
+
+void addTail(int value) {
+	linknd_t *ndPtr, *newPtr;
+	
+	if (list == NULL)
+	{
+		return;
+	}
+	else
+	{
+		ndPtr = list;
+		while (ndPtr->next != NULL){
+			ndPtr = ndPtr->next;
+		}
+		
+		newPtr = create_node(value);
+		ndPtr->next = newPtr;
+	} 
+}
+
+void genList(void){
+	list = create_node(0);
+	return;
+}
+void print_list(void){
+	linknd_t *ndPtr;
+	
+	ndPtr = (linknd_t*)list->next;
+	while(ndPtr != NULL){
+		printf("%i ", ndPtr->data);
+		ndPtr = ndPtr->next;
+	}
 }
